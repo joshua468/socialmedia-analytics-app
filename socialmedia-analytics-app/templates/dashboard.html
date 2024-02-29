@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Dashboard</title>
+</head>
+<body>
+    <h1>Social Media Dashboard</h1>
+    <h2>Analytics</h2>
+    <div>
+        <h3>Recent Posts</h3>
+        <ul>
+            {{ range .Posts }}
+            <li>{{ .Message }} - Likes: {{ .Likes }}, Shares: {{ .Shares }}, Time: {{ .TimeStamp }}</li>
+            {{ end }}
+        </ul>
+    </div>
+    <div>
+        <h3>Followers</h3>
+        <p>Total Followers: {{ .Followers }}</p>
+    </div>
+    <div>
+        <h3>Hashtag Usage</h3>
+        <ul>
+            {{ range $key, $value := .HashtagUsage }}
+            <li>{{ $key }}: {{ $value }}</li>
+            {{ end }}
+        </ul>
+    </div>
+    <form action="/logout" method="post">
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>
